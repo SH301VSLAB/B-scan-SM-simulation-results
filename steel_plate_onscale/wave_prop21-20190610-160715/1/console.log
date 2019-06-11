@@ -1,0 +1,34 @@
+     Memory allocation:
+
+     Numeric   data-        50 million  words (       200 Mbyte)
+
+     Character data-      2500 thousand words (        50 Mbyte)
+
+********************************************************
+
+Damping matched at 1000000. Hz
+
+Redefine variable 'freqdamp' if device centre frequency
+
+varies significantly from this value
+
+********************************************************
+
+Checking Model Integrity......
+
+********************************************************
+
+Damping matched at 1000000. Hz
+
+Redefine variable 'freqdamp' if device centre frequency
+
+varies significantly from this value
+
+********************************************************
+
+Checking Model Integrity......
+
+     Memory usage warning: This job requested      222 times the memory actually required to run the job
+
+     WARNING: There were      5     warnings generated during this run
+

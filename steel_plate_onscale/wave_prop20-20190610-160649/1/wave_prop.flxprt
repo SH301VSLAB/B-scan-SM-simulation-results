@@ -1,0 +1,678 @@
+ ...............................................................................
+ .        Begin    PZFlex  processing at Mon Jun 10 21:06:54 2019              .
+ ...............................................................................
+ .        Platform: Linux        Precision: single                             .
+ .        Release:  FLEX_v1.3.4                                                .
+ ...............................................................................
+ .        Copyright 1984-2019 by OnScale.  All rights reserved.                .
+ ...............................................................................
+ .        Username: Cloud_User   Machine: c767c6ea-75dc-4c8a-9aca-f06a40       .
+ ...............................................................................
+ .        Defaults file: /bin//PZFlex/Programs/Flex.defaults                   .
+ ...............................................................................
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- mem mb 200 50
+  
+     Memory allocation:
+     Numeric   data-        50 million  words (       200 Mbyte)
+     Character data-      2500 thousand words (        50 Mbyte)
+  
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c mem 800 200 /* Allocate 800 megawords of memory - 3 GigaBytes (Not necesarry for Windows Operating Systems)
+ input- c NOTE: MEM Command must be first command in file, if used. (Line 1)
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- rest no
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c     Generated Flex Input File
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c DESIGNER   :OnScale - Designer Generated
+ input- c MODEL DESCRIPTION :
+ input- c DATE CREATED  :10 Jun 2019
+ input- c VERSION    :1.0
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- mp omp 2 *
+
+     Number of CPU sockets=    2
+     Number of cores per socket=   36
+     Number of licensed Openmp threads= 1024
+     Maximum number of processes available for job=    2
+     Maximum number of processes available for MKL Pardiso=    2
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- titl wave_prop
+
+     wave_pro                                                              
+     --------  ------------------------------------------------------------
+      Job id                          Job title
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Define User Variables
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c These variables have been set by the user through the interface.
+ input- c
+ input- c *************************************************************************************************************
+          current  definition of coordFactor          (  real   ) =   1.000000    
+          current  definition of timeFactor           (  real   ) =   1.000000    
+          current  definition of dMassFactor          (  real   ) =   1.000000    
+          current  definition of freqint              (  real   ) =   1000000.    
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Define Meshing
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Set the variable for the approximate element size for the model. Must be
+ input- c   sufficient to represent the wavelengths of interest. Recommended that at least
+ input- c   15 elements per wavelength are used.
+ input- c
+ input- c *************************************************************************************************************
+          current  definition of freqdamp             (  real   ) =   1000000.    
+          current  definition of wavevel              (  real   ) =   5900.000    
+          current  definition of wavelgth             (  real   ) =  0.5900000E-02
+          current  definition of nmesh                ( integer ) =        15
+          current  definition of box                  (  real   ) =  0.3933334E-03
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Geometry Locations (XYZ)
+ input- c
+ input- c *************************************************************************************************************
+ input- c Scale Parameters
+          current  definition of xmin                 (  real   ) =   0.000000    
+          current  definition of xmax                 (  real   ) =  0.4100000E-01
+          current  definition of ymin                 (  real   ) =   0.000000    
+          current  definition of ymax                 (  real   ) =  0.2250000E-01
+ input- c Determine lengths of the model
+          current  definition of xlen                 (  real   ) =  0.4100000E-01
+          current  definition of ylen                 (  real   ) =  0.2250000E-01
+ input- c ***************************************************
+ input- c
+ input- c    Keypoints in the X-Direction
+ input- c
+ input- c ***************************************************
+          current  definition of idx                  ( integer ) =         2
+ input- c ***************************************************
+ input- c
+ input- c    Keypoints in the Y-Direction
+ input- c
+ input- c ***************************************************
+          current  definition of jdx                  ( integer ) =         2
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Indices Locations (IJK)
+ input- c
+ input- c *************************************************************************************************************
+ input- c Grid in I direction, using approximately element size of 'box' and at least 1 element
+          current  definition of indgrd               ( integer ) =       105
+ input- c Grid in J direction, using approximately element size of 'box' and at least 1 element
+          current  definition of jndgrd               ( integer ) =        58
+ input- c *************************************************************************************************************
+ input- c
+ input- c    GCON Grid & Geometry Allocation
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grid $i$idx $j$jdx
+     *end*     subcommand generated
+
+     grid geometry is 2-dimensional
+     constraint relations are pstn
+
+
+                          i          j          k        total
+                   -----   -----   -----      -----
+     grid nodes   -     105 x       58 x        1 =       6090
+
+     grid elements-     104 x       57 x        1 =       5928
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- geom
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  keypnt $idx $jdx
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+
+     the current model consist of:
+          * a standard partition which contains no skewed elements
+
+     x node coordinates - minimum=   0.000000    
+                          maximum=  0.4100000E-01
+
+     x  element spacing - minimum=  0.3942288E-03
+                          maximum=  0.3942326E-03
+
+     y node coordinates - minimum=   0.000000    
+                          maximum=  0.2250000E-01
+
+     y  element spacing - minimum=  0.3947355E-03
+                          maximum=  0.3947373E-03
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Driving Conditions
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    A number of predefined waveform functions can be accessed in OnScale. The DATA
+ input- c   HIST option is used below, other examples include wavelets, gaussians and step
+ input- c   functions. The manual details the function entries
+ input- c
+ input- c *************************************************************************************************************
+          current  definition of freqtimefunc_1       (  real   ) =   1000000.    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- func
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  name timefunc_1
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  wvlt $freqtimefunc_1 1.0 4.0 0.0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c --------------------------------------------------------------
+ input- c                   Project Material List
+ input- c --------------------------------------------------------------
+ input- c -------------------------------------------------------------------------
+ input- c Global variables used in all the material definitions
+ input- c -------------------------------------------------------------------------
+ input- c
+          current  definition of epvacm               (  real   ) =  0.8854000E-11
+          current  definition of rmu0                 (  real   ) =  0.1256600E-05
+ input- c
+ input- c -------------------------------------------------------------------------
+ input- c    Now define the axis transformation - only posx used in this file
+ input- c -------------------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- axis
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      form vctr
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posx car2 0. 0. 0.    1.  0.  0.   0. 1. 0.
+     axis definition: posx                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       1.000000       0.000000    
+     ybar direction:        0.000000       0.000000       1.000000    
+     zbar direction:        1.000000       0.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negx car2 0. 0. 0.   -1.  0.  0.   0. 1. 0.
+     axis definition: negx                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       1.000000       0.000000    
+     ybar direction:        0.000000       0.000000      -1.000000    
+     zbar direction:       -1.000000       0.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posy car2 0. 0. 0.    0.  1.  0.   0. 0. 1.
+     axis definition: posy                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       0.000000       1.000000    
+     ybar direction:        1.000000       0.000000       0.000000    
+     zbar direction:        0.000000       1.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negy car2 0. 0. 0.    0. -1.  0.   0. 0. 1.
+     axis definition: negy                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        0.000000       0.000000       1.000000    
+     ybar direction:       -1.000000       0.000000       0.000000    
+     zbar direction:        0.000000      -1.000000       0.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn posz car2 0. 0. 0.    0.  0.  1.   1. 0. 0.
+     axis definition: posz                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        1.000000       0.000000       0.000000    
+     ybar direction:        0.000000       1.000000       0.000000    
+     zbar direction:        0.000000       0.000000       1.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      defn negz car2 0. 0. 0.    0.  0. -1.   1. 0. 0.
+     axis definition: negz                    type: car2
+
+                                x              y              z
+             origin:        0.000000       0.000000       0.000000    
+     xbar direction:        1.000000       0.000000       0.000000    
+     ybar direction:        0.000000      -1.000000       0.000000    
+     zbar direction:        0.000000       0.000000      -1.000000    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-      end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c -------------------------------------------------------------------------
+ input- c    Input material properties to program
+ input- c -------------------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- matr
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c --------------------------------------------------------------
+ input- c type : METAL :
+ input- c name : steel :
+ input- c desc : Mild Steel , generic :
+ input- c --------------------------------------------------------------
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    wvsp on
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    type elas
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    prop steel 7900.00 5900.00 3200.00 0.010000
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    vdmp steel $freqdamp db 0.300000 1.20000 1.00000e+06 1.00000 0.010000 1.00000
+     
+      Damping Measures at frequency =    1000000.    
+          Dilatational db/unit length =    3.000E+01
+          Dilatational q              =    1.542E+02
+          Dilatational % critical     =    3.243E-01
+          Shear db/unit length        =    1.200E+02
+          Shear q                     =    7.106E+01
+          Shear % critical            =    7.036E-01
+
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    thrm steel 472.000 49.8000 49.8000 49.8000 1.0 0.00000 0.00000 27.0000
+          current  definition of eps                  (  real   ) =   1.000000    
+          current  definition of aeps                 (  real   ) =  0.8854000E-11
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    elec steel $aeps
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    elec void $epvacm
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-    end
+
+
+                            vcap material properties
+     --------------------------------------------------------------------------------
+
+
+     parm                steel
+     ---- --------------------
+   1 rho          7900.000    
+   2 bulk        0.1674119E+12
+   3 shr         0.8205477E+11
+   4 hrgl        0.1000000E-01
+   7 ldmp         0.000000    
+   8 qdmp         0.000000    
+   9 ltyp        -1.000000    
+  10  a           0.000000    
+  11  b           0.000000    
+  12  c           0.000000    
+  13  d           0.000000    
+  14  w           0.000000    
+  15  r           0.000000    
+  16 anon         1.000000    
+  17 geop         0.000000    
+  18 xint         0.000000    
+  19 xntn         0.000000    
+  20 ttyp         0.000000    
+  21 fcut         0.000000    
+  22 elst         0.000000    
+  23 tauv        0.1586491E-06
+  24 taud        0.1547375E-06
+  25 rksf        0.9968219    
+  26 rgsf        0.9722444    
+elec esxx        0.8854000E-11
+elec esyy        0.8854000E-11
+elec eszz        0.8854000E-11
+elec esyz         0.000000    
+elec esxz         0.000000    
+elec esxy         0.000000    
+      cp          5919.483    
+      cs          3222.837    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Primitive Definitions
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- site
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  regn void
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  blok steel 0.0 0.041 0.0 0.0225 0.0 0.0
+  ****warning from sitinp              :
+  z-dimension not positive
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  blok void 0.02 0.021 0.0 0.005 0.0 0.0
+  ****warning from sitinp              :
+  z-dimension not positive
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+
+     Model contains the following continuum elements:
+
+     material   elements        Volume
+     steel          5902       9.1839180E-04
+     void             26       4.0460527E-06
+
+     Bounding Box XYZ
+     material   xmin           xmax           ymin           ymax           zmin           zmax
+     steel      0.0000000E+00  4.1000001E-02  0.0000000E+00  2.2500001E-02  0.0000000E+00  0.0000000E+00
+     void       2.0105770E-02  2.0894231E-02  0.0000000E+00  5.1315790E-03  0.0000000E+00  0.0000000E+00
+
+     Bounding Box IJK
+     material            imin           imax           jmin           jmax           kmin           kmax
+     steel                  1            105              1             58              0              0
+     void                  52             54              1             14              0              0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Boundary Definitions
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- boun
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  side xmin free
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  side xmax free
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  side ymin symm
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  side ymax free
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Calculated Properties
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    By default, Flex only calculates the minimum required data set, typically this
+ input- c   means only velocities. This is done for memory efficiency. Should other
+ input- c   properites be required (e.g. displacements, stresses, strains, pressure), then
+ input- c   these must be requested by the CALC command. The manual lists all these options
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- calc
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  pres acoustic    /* calculate acoustic pressure
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Pressure Load Definitions
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- plod
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  pdef load1 functimefunc_1 10.0 0.0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  matr vctr1 steel out
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  sdf2 load1 vctr1 steel side 1
+     Additional element faces loaded=        57
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+           57 element surfaces loaded due to all SDEF commands
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- time * * 0.8
+
+
+     Problem start time=   0.000000        
+
+     Model time step will be automatically set to   0.80000 of allowable
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Process Model
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Issue process (PRCS) command. Checks model integrity, and calculates stable
+ input- c   time step. NOTE: Process command must always be issued
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- prcs
+                    Elapsed seconds at           Begin PRCS =    1.427E-02
+  
+      Single Precision bytes per word:           4
+                              
+      Rough Estimate of RAM requirements for this job
+  
+            Base Mechanical:     0.000
+            Calc arrays:         0.000
+            Aux arrays:          0.000
+      _____________________________________
+            Total RAM (Gbyte):   0.000
+                              
+                    Elapsed seconds at      Begin Continuum =    1.711E-02
+
+     zone   1     type=stnd
+     ibeg=       1     iend=     104     jbeg=       1     jend=      57     kbeg=       1     kend=       1
+     min  distance=  0.3942288E-03 for i=      81 j=       1 k=       1  material=steel               
+     min   transit=  0.6659852E-07 for i=      81 j=       1 k=       1  material=steel               
+     max time step=  0.5327882E-07
+                    Elapsed seconds at        End Continuum =    1.751E-02
+                    Elapsed seconds at           Begin BOUN =    1.760E-02
+                    Elapsed seconds at             End BOUN =    1.761E-02
+
+     model                            time step=   0.532788E-07
+     zone    1     time ratio=     1     time step=   0.532788E-07
+
+          data groups containing operational field variables
+     --------------------------------------------------------------------------------
+     data group=xvel                     length=      6090
+     data group=yvel                     length=      6090
+     data group=xfrc                     length=      6090
+     data group=yfrc                     length=      6090
+     data group=sgxx                     length=      5928
+     data group=sgyy                     length=      5928
+     data group=sgzz                     length=      5928
+     data group=sgxy                     length=      5928
+     data group=pres                     length=      5928
+     data group=vekk                     length=      5928
+     data group=vexx                     length=      5928
+     data group=veyy                     length=      5928
+     data group=vexy                     length=      5928
+
+
+
+     data manager summary: last name =       227     maximum names=        20000
+       (numeric  ) words used =         131296    maximum words =       50000000
+       (character) words used =           5402    maximum words =        2500000
+
+     Equivalently in Mbytes:
+       (numeric  ) Mbyte used =              1    maximum Mbyte =            200
+       (character) Mbyte used =              1    maximum Mbyte =             50
+                    Elapsed seconds at             End PRCS =    1.859E-02
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+
+     Execution estimates: number of stages=        2
+
+     Stage              nSteps          % of Run
+
+         1                1876                99
+
+         2                   1                 0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  colr user size 2
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  colr user 1 0.0 0.0 1.0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  colr user 2 -9.86437e-32 0.25 0.25
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  colr tabl matr 7
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  map steel 1
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  map void 2
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- grph
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  line off
+  ****warning from gphinp              :
+  Line plotting not yet supported for Flexlab graphics
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  plot matr
+ plot command executed
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- term
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Choose Time Histories To Store
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Save field (such as displacement or pressure) from a node or element for all
+ input- c   time steps with POUT command. Histories are referenced by order of
+ input- c   specification. Histories will be saved in the Flex History file (flxhst).
+ input- c
+ input- c *************************************************************************************************************
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- pout
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  rate 1
+
+     Output rates are: Histories=      1 Snapshots=      1
+          current  definition of xloc                 (  real   ) =  0.4050000E-01
+          current  definition of yloc                 (  real   ) =  0.2000000E-02
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  hist xyz aprs $xloc * * $yloc * *
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  hist functimefunc_1
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+
+     there are currently:    2 time histories to be saved every            1 time steps
+                             0 snapshot commands to be activated every    1 time steps
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Run the Model
+ input- c
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Specify the number of time steps to be run. Can be set to auto by using
+ input- c   'Ringdown'.
+ input- c
+ input- c *************************************************************************************************************
+ input- c User defined runtime for the model
+          current  definition of step                 (  real   ) =  0.5327882E-07
+          current  definition of ttime                (  real   ) =  0.1000000E-03
+  ****warning from syminp              :
+  Assigning Real value to Integer variable nexec               
+          current  definition of nexec                ( integer ) =      1876
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $nexec
+
+     Execution complete: current timestep=     1876 ; time=  0.9995107E-04
+
+     Total CP seconds for this job=   0.8900000    
+
+     CP seconds for executing     1876 timesteps=  0.8900000    
+
+     CP seconds for structural grid =  0.8900000    
+
+          CP seconds for each timestep computed =  0.4744136E-03
+
+          CP seconds for each element computed =  0.8011470E-07
+
+          Wallclock seconds since begining or last restart =  0.5743480    
+          current  definition of n_extra              ( integer ) =         0
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- exec $n_extra
+
+     Execution complete: current timestep=     1877 ; time=  0.1000043E-03
+
+     Total CP seconds for this job=   0.9000000    
+
+     CP seconds for executing        1 timesteps=  0.9999990E-02
+
+     CP seconds for structural grid =  0.9999990E-02
+
+          CP seconds for each timestep computed =  0.9999990E-02
+
+          CP seconds for each element computed =  0.1686908E-05
+
+          Wallclock seconds since begining or last restart =  0.5755079    
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- term
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- data
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  file out 'wave_prop.flxdato'
+     current data output file is-wave_prop.flxdato
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  out modl
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input-  end
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- c *************************************************************************************************************
+ input- c
+ input- c    Save symbol variables to file for later use
+ input- c
+ input- c *************************************************************************************************************
+ text symbol labl                =wave_prop
+            -    -    -    -    -    -    -    -    -    -    -    -    -    -
+ input- stop     /* return to command prompt
+
+        PLOD summary:  Current value       Max value           Time of Max
+        -------------  -------------       -------------       ------------
+
+Number of PLOD faces
+      Number defined             57                  57        0.000000E+00
+  Number deactivated              0                   0        0.000000E+00
+
+        Total forces
+    Negative x-force   0.000000E+00       -0.224979E+00        0.202460E-05
+    Positive x-force   0.000000E+00        0.128811E+00        0.159836E-05
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+Average pressure for
+    Negative x-force   0.000000E+00       -0.999907E+01        0.202460E-05
+    Positive x-force   0.000000E+00        0.572494E+01        0.159836E-05
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+      Total area for
+    Negative x-force   0.000000E+00        0.225000E-01        0.532788E-07
+    Positive x-force   0.000000E+00        0.225000E-01        0.319673E-06
+    Negative y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive y-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Negative z-force   0.000000E+00        0.000000E+00        0.000000E+00
+    Positive z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+     Total PLOD area
+     For all x-force   0.225000E-01        0.225000E-01        0.532788E-07
+     For all y-force   0.000000E+00        0.000000E+00        0.000000E+00
+     For all z-force   0.000000E+00        0.000000E+00        0.000000E+00
+
+     data manager summary: last name =       261     maximum names=        20000
+       (numeric  ) words used =         224507    maximum words =       50000000
+       (character) words used =           5431    maximum words =        2500000
+
+     Equivalently in Mbytes:
+       (numeric  ) Mbyte used =              1    maximum Mbyte =            200
+       (character) Mbyte used =              1    maximum Mbyte =             50
+ ...............................................................................
+ .           PZFlex  processing started   at Mon Jun 10 21:06:54 2019          .
+ .           PZFlex  processing completed at Mon Jun 10 21:06:54 2019          .
+ ...............................................................................
+ .             Machine: c767c6ea-75dc-4c8a-9aca-f06a40     Warnings:     5      .
+ ...............................................................................
+ .             Total cpu minutes for job:   0.2083333E-01                      .
+ ...............................................................................

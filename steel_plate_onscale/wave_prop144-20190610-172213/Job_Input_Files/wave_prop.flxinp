@@ -1,0 +1,351 @@
+mem mb 200 50
+
+c mem 800 200 /* Allocate 800 megawords of memory - 3 GigaBytes (Not necesarry for Windows Operating Systems)
+c NOTE: MEM Command must be first command in file, if used. (Line 1)
+rest no 
+
+c ************************************************************************************************************* 
+c 
+c 				Generated Flex Input File
+c 
+c ************************************************************************************************************* 
+c 
+c	DESIGNER			:OnScale - Designer Generated
+c	MODEL DESCRIPTION	:
+c	DATE CREATED		:10 Jun 2019
+c	VERSION				:1.0
+c ************************************************************************************************************* 
+
+mp omp 2 *
+
+
+ 
+titl wave_prop 
+
+c ************************************************************************************************************* 
+c 
+c 			Define User Variables 
+c 
+c ************************************************************************************************************* 
+c 
+c These variables have been set by the user through the interface.
+c 
+c ************************************************************************************************************* 
+
+symb coordFactor = 1.0		 /* Coordinate conversion factor
+symb timeFactor = 1.0		 /* Time conversion factor
+symb dMassFactor = 1.0		 /* Mass conversion factor
+symb freqint = 1e+6		 /* Determined Drive Frequency (Hz)
+
+c ************************************************************************************************************* 
+c 
+c 			Define Meshing 
+c 
+c ************************************************************************************************************* 
+c 
+c 			Set the variable for the approximate element size for the model. Must be 
+c			sufficient to represent the wavelengths of interest. Recommended that at least 
+c			15 elements per wavelength are used.
+
+c 
+c ************************************************************************************************************* 
+
+symb freqdamp = $freqint
+symb wavevel = 5900.0		 /* Longitudinal wave velocity in material (m/s)
+symb wavelgth = $wavevel / $freqint		 /* Wavelength of sound in material (m)
+symb nmesh = 15		 /* Elements per wavelength
+symb box = $wavelgth / $nmesh
+
+c ************************************************************************************************************* 
+c 
+c 			Geometry Locations (XYZ)
+c 
+c ************************************************************************************************************* 
+
+
+c Scale Parameters
+symb xmin = 0.0 * $coordFactor
+symb xmax = 0.041 * $coordFactor
+symb ymin = 0.0 * $coordFactor
+symb ymax = 0.0225 * $coordFactor
+
+c Determine lengths of the model
+symb xlen = ( $xmax - $xmin )
+symb ylen = ( $ymax - $ymin )
+
+c *************************************************** 
+c 
+c 			Keypoints in the X-Direction
+c 
+c *************************************************** 
+
+symb #keycord x 1 $xmin $xlen 
+symb #get { idx } rootmax x 
+
+c *************************************************** 
+c 
+c 			Keypoints in the Y-Direction
+c 
+c *************************************************** 
+
+symb #keycord y 1 $ymin $ylen 
+symb #get { jdx } rootmax y 
+
+c ************************************************************************************************************* 
+c 
+c 			Indices Locations (IJK)
+c 
+c ************************************************************************************************************* 
+
+c Grid in I direction, using approximately element size of 'box' and at least 1 element
+symb #keyindx i 1 $idx 1 $box 1 
+symb indgrd = $i$idx
+
+c Grid in J direction, using approximately element size of 'box' and at least 1 element
+symb #keyindx j 1 $jdx 1 $box 1 
+symb jndgrd = $j$jdx
+
+
+c ************************************************************************************************************* 
+c 
+c 			GCON Grid & Geometry Allocation
+c 
+c ************************************************************************************************************* 
+
+grid $i$idx $j$jdx 
+geom
+	keypnt $idx $jdx 
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Driving Conditions 
+c 
+c ************************************************************************************************************* 
+c 
+c 			A number of predefined waveform functions can be accessed in OnScale. The DATA 
+c			HIST option is used below, other examples include wavelets, gaussians and step 
+c			functions. The manual details the function entries
+
+c 
+c ************************************************************************************************************* 
+
+symb freqtimefunc_1 = 1e+6
+func
+	name timefunc_1 
+	wvlt $freqtimefunc_1 1.0 4.0 0.0 
+	end
+ 
+c -------------------------------------------------------------- 
+c                   Project Material List
+c -------------------------------------------------------------- 
+
+
+c -------------------------------------------------------------------------
+c Global variables used in all the material definitions
+c -------------------------------------------------------------------------
+c
+symb epvacm = 8.854e-12               /* dielectric constant for vacumn
+symb freqdamp = 1.e6 if noexist       /* specified frequency for damping model
+symb rmu0 = 1.2566e-6
+
+symb #msg 5
+********************************************************
+Damping matched at $freqdamp Hz
+Redefine variable 'freqdamp' if device centre frequency
+varies significantly from this value
+********************************************************
+
+
+c
+c -------------------------------------------------------------------------
+c    Now define the axis transformation - only posx used in this file
+c -------------------------------------------------------------------------
+
+axis
+     form vctr
+     defn posx car2 0. 0. 0.    1.  0.  0.   0. 1. 0.
+     defn negx car2 0. 0. 0.   -1.  0.  0.   0. 1. 0.
+     defn posy car2 0. 0. 0.    0.  1.  0.   0. 0. 1.
+     defn negy car2 0. 0. 0.    0. -1.  0.   0. 0. 1.
+     defn posz car2 0. 0. 0.    0.  0.  1.   1. 0. 0.
+     defn negz car2 0. 0. 0.    0.  0. -1.   1. 0. 0.
+     end
+
+c -------------------------------------------------------------------------
+c    Input material properties to program
+c -------------------------------------------------------------------------
+
+matr
+c -------------------------------------------------------------- 
+c type : METAL : 
+c name : steel : 
+c desc : Mild Steel , generic : 
+c -------------------------------------------------------------- 
+
+
+   wvsp on 
+   type elas 
+   prop steel 7900.00 5900.00 3200.00 0.010000
+   vdmp steel $freqdamp db 0.300000 1.20000 1.00000e+06 1.00000 0.010000 1.00000
+   thrm steel 472.000 49.8000 49.8000 49.8000 1.0 0.00000 0.00000 27.0000
+   symb eps = 1
+   symb aeps = $epvacm * $eps
+   elec steel $aeps 
+
+
+   elec void $epvacm
+   end
+
+c ************************************************************************************************************* 
+c 
+c 			Primitive Definitions
+c 
+c ************************************************************************************************************* 
+
+site
+	regn void 
+	blok steel 0.0 0.041 0.0 0.0225 0.0 0.0 
+	blok void 0.02 0.021 0.0 0.005 0.0 0.0 
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Boundary Definitions
+c 
+c ************************************************************************************************************* 
+
+boun
+	side xmin free 
+	side xmax free 
+	side ymin symm 
+	side ymax free 
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Calculated Properties 
+c 
+c ************************************************************************************************************* 
+c 
+c 			By default, Flex only calculates the minimum required data set, typically this 
+c			means only velocities. This is done for memory efficiency. Should other 
+c			properites be required (e.g. displacements, stresses, strains, pressure), then 
+c			these must be requested by the CALC command. The manual lists all these options
+
+c 
+c ************************************************************************************************************* 
+
+calc
+	pres acoustic 		 /* calculate acoustic pressure
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Pressure Load Definitions
+c 
+c ************************************************************************************************************* 
+
+plod
+	pdef load1 functimefunc_1 10.0 0.0 
+	matr vctr1 steel out 
+	sdf2 load1 vctr1 steel side 1 
+	end
+ 
+
+time * * 0.8 
+
+c ************************************************************************************************************* 
+c 
+c 			Process Model 
+c 
+c ************************************************************************************************************* 
+c 
+c 			Issue process (PRCS) command. Checks model integrity, and calculates stable 
+c			time step. NOTE: Process command must always be issued
+
+c 
+c ************************************************************************************************************* 
+
+symb #msg 1
+Checking Model Integrity......
+prcs
+grph
+	colr user size 2 
+	colr user 1 0.0 0.0 1.0 
+	colr user 2 -9.86197e-32 0.25 0.25 
+	colr tabl matr 7 
+	map steel 1 
+	map void 2 
+	end
+ 
+grph
+	line off 
+	plot matr 
+	end
+ 
+term
+
+c ************************************************************************************************************* 
+c 
+c 			Choose Time Histories To Store 
+c 
+c ************************************************************************************************************* 
+c 
+c 			Save field (such as displacement or pressure) from a node or element for all 
+c			time steps with POUT command. Histories are referenced by order of 
+c			specification. Histories will be saved in the Flex History file (flxhst).
+
+c 
+c ************************************************************************************************************* 
+
+pout
+	rate 1 
+	symb xloc = 0.0405 * $coordFactor
+	symb yloc = 0.0144 * $coordFactor
+	hist xyz aprs $xloc * * $yloc * * 
+	hist functimefunc_1 
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Run the Model 
+c 
+c ************************************************************************************************************* 
+c 
+c 			Specify the number of time steps to be run. Can be set to auto by using 
+c			'Ringdown'.
+
+c 
+c ************************************************************************************************************* 
+
+c User defined runtime for the model
+symb #get { step } timestep 
+symb ttime = 0.0001
+symb nexec = $ttime / $step
+exec $nexec 
+
+symb n_extra = nint ( $step / 10 )
+exec $n_extra 
+term
+
+data
+	file out 'wave_prop.flxdato' 
+	out modl 
+	end
+ 
+
+c ************************************************************************************************************* 
+c 
+c 			Save symbol variables to file for later use
+c 
+c ************************************************************************************************************* 
+
+symb #get { labl } jobname 
+symb #save '$labl.symb' 
+stop  		 /* return to command prompt
